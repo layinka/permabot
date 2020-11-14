@@ -1,0 +1,21 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" >Load Arweave Wallet</h3>
+</div>
+<div class="modal-body" >
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <!-- As an element -->
+            <h4>Upload an existing wallet</h4>
+            <input type="file" nv-file-select uploader="$ctrl.uploader"/><br/>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4>Or Create a new wallet</h4>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    
+    <!-- <button class="btn btn-primary" type="button" ng-click="$ctrl.save()">Load</button> -->
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>
+

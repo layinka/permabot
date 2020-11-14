@@ -1,0 +1,116 @@
+{{{{rawhelper}}}}
+<div ng-app="homeApp"  ng-controller="HomeController as homeCtrl" ng-init="homeCtrl.initialize()" ng-cloak>
+    <div class="card">
+        <div class="card-header">
+            
+            <div class="">
+                <h3>Pending Items</h3>
+                
+                <h4 ng-if="homeCtrl.walletAddress" class="" ><b>Wallet: </b> <small>{{homeCtrl.walletAddress}}</small></h4>
+
+            </div>
+        </div>
+        <div class="card-body" ng-if="!homeCtrl.pending">
+            <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="card-body" ng-if="homeCtrl.pending.length <1">
+            <h4 class="alert alert-info">No Pending Tweet</h4>
+        </div>
+        <div class="card-body" ng-if="homeCtrl.pending">
+            <div class="card repeated-item mb-4" ng-repeat="tweet in homeCtrl.pending">
+                <div class="card-body">
+                    <div class="card-text">{{tweet.tweetText}}</div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <div class="blockquote-footer">Tweeted by @{{tweet.tweetOwner}} </div>
+                        <div class="blockquote-footer">Sent in by @{{tweet.threadSubmittedBy}}</div>
+                        
+                        <div class="blockquote-footer" ng-if="tweet.tweetTimeStamp!==null">{{ tweet.tweetTimeStamp | date: 'yyyy-MM-dd' }}</div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted">
+                    <div class="d-flex justify-content-between">
+                        <div >{{tweet.noOfTweetsInThread}} Tweets in Thread </div>
+                        <div >Needs {{tweet.estimatedFee}} Ars </div>
+                        
+                        <div class="btn btn-primary" ng-click="homeCtrl.startDonate(tweet)">Donate now to Publish</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{{{/rawhelper}}}}
+
+
+<footer class="footer">
+    Total Tweets archived: 200
+</footer>
+
+{{!-- <div ng-app="homeApp"  ng-controller="HomeController as homeCtrl" ng-init="homeCtrl.initialize(1)">
+    <div class="card">
+        <div class="card-header">
+            <h3>Pending Items</h3>
+        </div>
+        <div class="card-body">
+            {{homeCtrl.id}}
+        </div>
+    </div>
+</div> --}}
+
+
+{{#section 'script'}}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/angular-animate@1.7.8/angular-animate.min.js" integrity="sha256-biQnzwpmTVb5ZZDRDiU8iwbj7ZPTH9SZSxn5gewyFA0=" crossorigin="anonymous"></script>
+<script src="/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.6.1/angular-file-upload.min.js" integrity="sha512-axkIpxPnJn/ltsZKAG8OiY1Ef4bSZ3XiBj5DJOXC4tQG0519hu0kzVClhaVonpXIP6xJjDbLcNc88YiZb9pkEw==" crossorigin="anonymous"></script>
+
+{{!-- <script src="https://arweave.net/xqxDMg4VM11bWC5Vz8owtOiOiwx9KYGkcFGgYV5DNr0"></script> --}}
+<script src="https://arweave.net/Uo_LBOBNBugA3QKNxxTPM_7qVAj5Dfm8dIrJTCsV3i0"></script>
+
+<script src="/js/home.js"></script>
+<script >
+    // Wait for the DOM to be ready
+/** $(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("#myForm").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      first_name: "required",
+      last_name: "required",
+      email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        email: true
+      },
+     
+    },
+    // Specify validation error messages
+    messages: {
+      first_name: "Please enter your firstname",
+      last_name: "Please enter your lastname",
+      
+      email: "Please enter a valid email address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  }); 
+});*/
+
+</script>
+
+{{/section}}

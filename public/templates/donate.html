@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" >Publish to the Permaweb</h3>
+</div>
+<div class="modal-body" >
+    <div class="row">
+        <div class="col-12 ">
+            <!-- As an element -->
+            <h4>Your donation will help fund gas to publish this to the Permaweb</h4>
+            <div class="card-body">
+                <div class="card-text">{{$ctrl.tweet.tweetText}}</div>
+                <div class="card-text"><b>Mining fee:  </b>{{$ctrl.tweet.estimatedPublishingCost}} Ar needed</div>
+                <div class="card-text"><b>Tx Fee:  </b> {{$ctrl.tweet.estimatedFee}} Ar needed</div>
+
+                <div class="d-flex justify-content-between">
+                    <div class="blockquote-footer">Sent in by @{{$ctrl.tweet.publisher}}</div>
+                    
+                    <div class="blockquote-footer" ng-if="$ctrl.tweet.tweetTimeStamp!==null">{{ $ctrl.tweet.tweetTimeStamp| date: 'yyyy-MM-dd' }}</div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="d-flex justify-content-between">
+                        <div >{{$ctrl.tweet.noOfTweetsInThread}} Tweets in Thread </div>
+                        <div >Needs {{($ctrl.tweet.estimatedPublishingCost + $ctrl.tweet.estimatedFee) | number}} Ars </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<div class="modal-footer">
+    
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.payNow()">Pay {{($ctrl.tweet.estimatedPublishingCost + $ctrl.tweet.estimatedFee) | number }} Ar(Estimated) </button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>
+
